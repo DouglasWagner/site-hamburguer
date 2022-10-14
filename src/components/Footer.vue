@@ -21,7 +21,5 @@
     justify-content: center;
     width: 100%;
     bottom: 0;
-    position: absolute;
-
   }
 </style>
