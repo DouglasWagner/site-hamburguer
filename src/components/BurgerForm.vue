@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Componentes de Mensagem</p>
+        <Message :msg="msg" v-show="msg"/>
         <div>
             <form id="burger-form" @submit="createBurger">
                 <div class="input-container">
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import Message from './Message.vue'
 
 export default {
     name: "BurgerForm",
@@ -54,48 +55,48 @@ export default {
             carne: null,
             opcionais: [],
             msg: null
-        }
+        };
     },
     methods: {
         async getIgredientes() {
-            const req = await fetch("http://localhost:3000/ingredientes")
-            const data = await req.json()
-
-            this.paes = data.paes
-            this.carnes = data.carnes
-            this.opcionaisdata = data.opcionais
+            const req = await fetch("http://localhost:3000/ingredientes");
+            const data = await req.json();
+            this.paes = data.paes;
+            this.carnes = data.carnes;
+            this.opcionaisdata = data.opcionais;
         },
-        async createBurger(e){
-
+        async createBurger(e) {
             e.preventDefault();
-
             const data = {
                 nome: this.nome,
                 carne: this.carne,
                 pao: this.pao,
                 opcionais: Array.from(this.opcionais),
                 status: "Solicitado"
-            }
-
+            };
             const dataJson = JSON.stringify(data);
-
             const req = await fetch("http://localhost:3000/burgers", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: dataJson
             });
-
             const res = await req.json();
+
+            this.msg = `Pedido Nº ${ res.id } realizado com Sucesso!`
+
+            setTimeout(()=> this.msg = "", 3000)
 
             this.nome = "",
             this.carne = "",
             this.pao = "",
-            this.opcionais = ""
-
+            this.opcionais = "";
         }
     },
     mounted() {
-        this.getIgredientes()
+        this.getIgredientes();
+    },
+    components: { 
+        Message 
     }
 }
 </script>
