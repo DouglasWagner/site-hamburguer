@@ -79,25 +79,26 @@
   ],
   "burgers": [
     {
-      "nome": "Douglas",
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 1
-    },
-    {
       "nome": "Pedro",
       "carne": "Veggie burger",
       "pao": "3 Queijos",
       "opcionais": [
         "Pepino"
       ],
-      "status": "Solicitado",
+      "status": "Em produção",
       "id": 2
+    },
+    {
+      "nome": "teste",
+      "carne": "Picanha",
+      "pao": null,
+      "opcionais": [
+        "Cheddar",
+        "Pepino",
+        "Tomate"
+      ],
+      "status": "Finalizado",
+      "id": 3
     }
   ]
 }
