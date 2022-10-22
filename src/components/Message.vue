@@ -1,5 +1,5 @@
 <template>
-    <div class="mensagem-container">
+    <div class="mensagem-container" v-if="show">
         <p>{{ msg }}</p>
     </div>
 </template>
@@ -9,6 +9,17 @@
         name: 'Message',
         props:{
             msg: String
+        },
+        watch:{
+            msg:function(){
+                this.show = true
+                setTimeout(()=> this.show = false, 3000)
+            }
+        },
+        data(){
+            return{
+                show: false
+            }
         }
     }
 </script>

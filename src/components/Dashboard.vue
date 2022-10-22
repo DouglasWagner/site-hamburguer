@@ -1,5 +1,5 @@
 <template>
-    <Message :msg="msg" v-show="msg"/>
+    <Message :msg="msg"/>
     <div id="burger-table">
         <div>
             <div id="burger-table-heading">
@@ -76,9 +76,7 @@ export default {
                 method: "DELETE"
             })
 
-            this.msg = `Pedido deletado com Sucesso!`
-
-            setTimeout(()=> this.msg = "", 3000)
+            this.showMsg(`Pedido deletado com Sucesso!`)  
 
             this.getPedidos();
         },
@@ -94,11 +92,13 @@ export default {
 
             })
 
-            const res = await req.json();
+            const res = await req.json();    
 
-            this.msg = `Pedido Nº ${res.id} foi atualizado para ${res.status}`
+            this.showMsg(`Pedido Nº ${res.id} foi atualizado para ${res.status}`)
+        },
 
-            setTimeout(()=> this.msg = "", 3000)
+        showMsg(msg){
+            this.msg = msg
         }
     },
     mounted(){

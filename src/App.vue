@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :logo="logo_src" :alt="app_name" />
-    <div>
+    <div class="main-content">
       <router-view />
     </div>
     <Footer/>
@@ -34,6 +34,10 @@ export default {
     margin: 0;
     box-sizing: border-box;
   }
+  .main-content{
+    position: relative;
+    min-height: 100vh;
+  }
   .main-container {
     margin: 50px;
     min-height: 250px;
@@ -44,4 +48,5 @@ export default {
     margin-bottom: 30px;
     color: #222;
   }
+  
 </style>
